@@ -1,5 +1,7 @@
 import math
 
+# ---- Basic operations ----
+
 def add(x, y):
     return x + y
 
@@ -14,6 +16,8 @@ def divide(x, y):
         raise ValueError("Cannot divide by zero")
     return x / y
 
+# ---- Scientific operations ----
+
 def power(x, y):
     return x ** y
 
@@ -25,6 +29,27 @@ def square_root(x):
 def percentage(x, y):
     return (x * y) / 100
 
+# ---- Memory functions ----
+
+memory = 0.0
+
+def memory_add(value):
+    global memory
+    memory += value
+
+def memory_subtract(value):
+    global memory
+    memory -= value
+
+def memory_recall():
+    return memory
+
+def memory_clear():
+    global memory
+    memory = 0.0
+
+# ---- Input helper ----
+
 def get_number(prompt):
     """Keep asking until the user types a real number."""
     while True:
@@ -33,42 +58,75 @@ def get_number(prompt):
         except ValueError:
             print("That's not a valid number, try again.")
 
+# ---- Main program ----
+
 def main():
     print("=== Advanced Calculator ===")
-    print("1. Add")
-    print("2. Subtract")
-    print("3. Multiply")
-    print("4. Divide")
-    print("5. Power (x^y)")
-    print("6. Square Root (of first number)")
-    print("7. Percentage (x% of y)")
 
-    choice = input("Pick an option (1-7): ")
-    num1 = get_number("Enter first number: ")
+    while True:
+        print("\n1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Power (x^y)")
+        print("6. Square Root (of one number)")
+        print("7. Percentage (x% of y)")
+        print("8. Memory Add (M+)")
+        print("9. Memory Subtract (M-)")
+        print("10. Memory Recall (MR)")
+        print("11. Memory Clear (MC)")
+        print("12. Quit")
 
-    try:
-        if choice == "6":
-            print("Result:", square_root(num1))
-            return
+        choice = input("Pick an option (1-12): ")
 
-        num2 = get_number("Enter second number: ")
+        if choice == "12":
+            print("Goodbye!")
+            break
 
-        if choice == "1":
-            print("Result:", add(num1, num2))
-        elif choice == "2":
-            print("Result:", subtract(num1, num2))
-        elif choice == "3":
-            print("Result:", multiply(num1, num2))
-        elif choice == "4":
-            print("Result:", divide(num1, num2))
-        elif choice == "5":
-            print("Result:", power(num1, num2))
-        elif choice == "7":
-            print("Result:", percentage(num1, num2))
-        else:
-            print("Invalid choice")
-    except ValueError as e:
-        print("Error:", e)
+        try:
+            if choice == "6":
+                num1 = get_number("Enter a number: ")
+                print("Result:", square_root(num1))
+
+            elif choice == "10":
+                print("Memory value:", memory_recall())
+
+            elif choice == "11":
+                memory_clear()
+                print("Memory cleared.")
+
+            elif choice == "8":
+                num1 = get_number("Enter a number to add to memory: ")
+                memory_add(num1)
+                print("Memory is now:", memory_recall())
+
+            elif choice == "9":
+                num1 = get_number("Enter a number to subtract from memory: ")
+                memory_subtract(num1)
+                print("Memory is now:", memory_recall())
+
+            elif choice in ("1", "2", "3", "4", "5", "7"):
+                num1 = get_number("Enter first number: ")
+                num2 = get_number("Enter second number: ")
+
+                if choice == "1":
+                    print("Result:", add(num1, num2))
+                elif choice == "2":
+                    print("Result:", subtract(num1, num2))
+                elif choice == "3":
+                    print("Result:", multiply(num1, num2))
+                elif choice == "4":
+                    print("Result:", divide(num1, num2))
+                elif choice == "5":
+                    print("Result:", power(num1, num2))
+                elif choice == "7":
+                    print("Result:", percentage(num1, num2))
+
+            else:
+                print("Invalid choice, try again.")
+
+        except ValueError as e:
+            print("Error:", e)
 
 if __name__ == "__main__":
     main()
