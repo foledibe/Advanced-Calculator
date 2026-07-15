@@ -54,8 +54,9 @@ Result: 9.0
 
 ```text
 advanced-calculator/
-├── calculator.py   # main program
-└── README.md       # this file
+├── calculator.py   # main calculator program
+├── tests.py        # unit tests for calculator functions
+└── README.md       # project documentation
 ```
 
 Building this project helped me practice:
