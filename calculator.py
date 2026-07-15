@@ -1,17 +1,28 @@
+"""
+Advanced Calculator
+-------------------
+A command-line calculator with basic arithmetic, scientific operations,
+memory functions, and calculation history.
+"""
+
 import math
 
 # ---- Basic operations ----
 
 def add(x, y):
+    """Return the sum of x and y."""
     return x + y
 
 def subtract(x, y):
+    """Return x minus y."""
     return x - y
 
 def multiply(x, y):
+    """Return the product of x and y."""
     return x * y
 
 def divide(x, y):
+    """Return x divided by y. Raises ValueError if y is 0."""
     if y == 0:
         raise ValueError("Cannot divide by zero")
     return x / y
@@ -19,14 +30,17 @@ def divide(x, y):
 # ---- Scientific operations ----
 
 def power(x, y):
+    """Return x raised to the power of y."""
     return x ** y
 
 def square_root(x):
+    """Return the square root of x. Raises ValueError if x is negative."""
     if x < 0:
         raise ValueError("Cannot take square root of a negative number")
     return math.sqrt(x)
 
 def percentage(x, y):
+    """Return x percent of y."""
     return (x * y) / 100
 
 # ---- Memory functions ----
@@ -34,17 +48,21 @@ def percentage(x, y):
 memory = 0.0
 
 def memory_add(value):
+    """Add value to the stored memory."""
     global memory
     memory += value
 
 def memory_subtract(value):
+    """Subtract value from the stored memory."""
     global memory
     memory -= value
 
 def memory_recall():
+    """Return the current value stored in memory."""
     return memory
 
 def memory_clear():
+    """Reset memory back to 0."""
     global memory
     memory = 0.0
 
@@ -53,9 +71,11 @@ def memory_clear():
 history = []
 
 def log_calculation(description, result):
+    """Add a calculation to the history log."""
     history.append(f"{description} = {result}")
 
 def show_history():
+    """Print every calculation performed so far."""
     if not history:
         print("No calculations yet.")
     else:
@@ -66,7 +86,7 @@ def show_history():
 # ---- Input helper ----
 
 def get_number(prompt):
-    """Keep asking until the user types a real number."""
+    """Ask the user for a number, re-prompting until valid input is given."""
     while True:
         try:
             return float(input(prompt))
@@ -76,6 +96,7 @@ def get_number(prompt):
 # ---- Main program ----
 
 def main():
+    """Run the calculator's interactive menu loop."""
     print("=== Advanced Calculator ===")
 
     while True:

@@ -19,13 +19,14 @@ past calculations.
 Make sure you have Python 3 installed, then run:
 
 ```bash
-python3 calculator.py
+python calculator.py
 ```
 
 Follow the on-screen menu and enter the number of the operation you want.
 
 ## Example
 
+```text
 === Advanced Calculator ===
 
 Add
@@ -41,10 +42,13 @@ MR
 MC
 History
 Quit
+
 Pick an option (1-13): 1
 Enter first number: 4
 Enter second number: 5
+
 Result: 9.0
+```
 
 ## Project structure
 
