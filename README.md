@@ -50,13 +50,13 @@ Enter second number: 5
 Result: 9.0
 ```
 
-## Project structure
+## Project Structure
 
+```text
 advanced-calculator/
-├── calculator.py # main program
-└── README.md # this file
-
-## What I learned
+├── calculator.py   # main program
+└── README.md       # this file
+```
 
 Building this project helped me practice:
 
